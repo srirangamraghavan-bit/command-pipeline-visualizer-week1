@@ -1,39 +1,37 @@
 #include <stdio.h>
 #include <string.h>
 #include "pipeline.h"
+#include "input.h"
 
 int main()
 {
-    char input[MAX_INPUT];
+    int count = 0;
+    char **commands;
 
     printf("========================================\n");
-    printf("     COMMAND PIPELINE VISUALIZER\n");
+    printf("       COMMAND PIPELINE VISUALIZER\n");
     printf("========================================\n");
-    printf("Enter a command pipeline or type 'exit'.\n\n");
+    printf("Enter command pipelines.\n");
+    printf("Type 'exit' when finished.\n\n");
 
-    while (1)
+    commands = read_commands(&count);
+
+    if (commands == NULL)
     {
-        printf("pipeline> ");
-
-        if (fgets(input, sizeof(input), stdin) == NULL)
-            break;
-
-        input[strcspn(input, "\n")] = '\0';
-
-        if (strcmp(input, "exit") == 0)
-        {
-            printf("Exiting Command Pipeline Visualizer...\n");
-            break;
-        }
-
-        if (strlen(input) == 0)
-        {
-            continue;
-        }
-
-        printf("\nPipeline received: %s\n", input);
-        printf("Pipeline analysis will be implemented in the next stage.\n\n");
+        printf("No commands were entered.\n");
+        return 1;
     }
+
+    printf("\nCommands received:\n");
+
+    for (int i = 0; i < count; i++)
+    {
+        printf("%d. %s\n", i + 1, commands[i]);
+    }
+
+    printf("\nTotal commands: %d\n", count);
+
+    free_commands(commands, count);
 
     return 0;
 }
