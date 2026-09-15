@@ -1,4 +1,4 @@
-# Command Pipeline Visualizer
+\# Command Pipeline Visualizer
 
 Command Pipeline Visualizer is an Operating Systems project designed
 to help beginners understand how commands in a Unix pipeline interact.
@@ -22,6 +22,18 @@ cat file.txt | grep "pattern" | sort
 - Makefile-based build
 - Git repository setup
 - GitHub repository setup
+
+## Week 2 Features
+
+- Dynamic command input handling
+- Multiple command input
+- `read_commands()` function for reading commands
+- Dynamic memory allocation using `malloc()` and `realloc()`
+- Command storage and command counting
+- `free_commands()` for memory cleanup
+- Updated Makefile to compile `src/input.c`
+- Commands displayed in the order they were entered
+- Improved handling of empty command input
 
 ## Project Structure
 
@@ -55,3 +67,10 @@ exit
 Future stages will parse pipeline commands, identify individual
 commands, execute pipeline processes, and visualize the flow of
 data between pipeline stages.
+## Week 3 Features
+
+- Command parsing using `strtok()`
+- Dynamic `argv[]` construction
+- Modular parser implementation
+- Tokenized command arguments
+- Memory cleanup using `free_tokens()`

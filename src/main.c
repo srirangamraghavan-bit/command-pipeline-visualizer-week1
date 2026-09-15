@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <string.h>
 #include "pipeline.h"
 #include "input.h"
+#include "parser.h"
 
 int main()
 {
@@ -9,7 +9,7 @@ int main()
     char **commands;
 
     printf("========================================\n");
-    printf("       COMMAND PIPELINE VISUALIZER\n");
+    printf("        COMMAND PIPELINE VISUALIZER\n");
     printf("========================================\n");
     printf("Enter command pipelines.\n");
     printf("Type 'exit' when finished.\n\n");
@@ -26,7 +26,18 @@ int main()
 
     for (int i = 0; i < count; i++)
     {
-        printf("%d. %s\n", i + 1, commands[i]);
+        printf("\n%d. %s\n", i + 1, commands[i]);
+
+        char **tokens = parse_line(commands[i]);
+
+        printf("Tokens:\n");
+
+        for (int j = 0; tokens[j] != NULL; j++)
+        {
+            printf("argv[%d] = %s\n", j, tokens[j]);
+        }
+
+        free_tokens(tokens);
     }
 
     printf("\nTotal commands: %d\n", count);
