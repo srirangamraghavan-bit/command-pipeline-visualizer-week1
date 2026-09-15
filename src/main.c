@@ -2,7 +2,7 @@
 #include "pipeline.h"
 #include "input.h"
 #include "parser.h"
-
+#include "process.h"
 int main()
 {
     int count = 0;
@@ -36,7 +36,7 @@ int main()
         {
             printf("argv[%d] = %s\n", j, tokens[j]);
         }
-
+        execute(tokens);
         free_tokens(tokens);
     }
 
