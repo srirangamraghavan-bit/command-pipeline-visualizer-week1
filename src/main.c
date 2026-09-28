@@ -3,16 +3,18 @@
 #include "input.h"
 #include "parser.h"
 #include "process.h"
+#include "builtin.h"
+
 int main()
 {
     int count = 0;
     char **commands;
 
-    printf("========================================\n");
-    printf("        COMMAND PIPELINE VISUALIZER\n");
-    printf("========================================\n");
+    printf("=====================================\n");
+    printf("       COMMAND PIPELINE VISUALIZER\n");
+    printf("=====================================\n");
     printf("Enter command pipelines.\n");
-    printf("Type 'exit' when finished.\n\n");
+    printf("Type 'exit' when finished.\n");
 
     commands = read_commands(&count);
 
@@ -30,13 +32,33 @@ int main()
 
         char **tokens = parse_line(commands[i]);
 
+        if (tokens == NULL)
+        {
+            printf("Parsing failed.\n");
+            continue;
+        }
+
         printf("Tokens:\n");
 
         for (int j = 0; tokens[j] != NULL; j++)
         {
             printf("argv[%d] = %s\n", j, tokens[j]);
         }
-        execute(tokens);
+
+        int builtin_status = execute_builtin(tokens);
+
+        if (builtin_status == 2)
+        {
+            free_tokens(tokens);
+            free_commands(commands, count);
+            return 0;
+        }
+
+        if (builtin_status == 0)
+        {
+            execute(tokens);
+        }
+
         free_tokens(tokens);
     }
 

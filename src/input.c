@@ -30,8 +30,7 @@ char **read_commands(int *count)
 
         buffer[strcspn(buffer, "\n")] = '\0';
 
-        if (strcmp(buffer, "done") == 0)
-            break;
+       if (strcmp(buffer, "done") == 0 || strcmp(buffer, "exit") == 0)            break;
 
         if (strlen(buffer) == 0)
             continue;

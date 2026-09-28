@@ -74,3 +74,12 @@ data between pipeline stages.
 - Modular parser implementation
 - Tokenized command arguments
 - Memory cleanup using `free_tokens()`
+## Week 5 Features
+
+- Built-in command support
+- `cd` for changing the current directory
+- `pwd` for displaying the current directory
+- `clear` for clearing the terminal screen
+- `exit` for safely exiting the program
+- Built-in commands are handled internally without creating external processes
+- Command arguments are supported for built-in commands
