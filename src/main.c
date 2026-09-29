@@ -4,15 +4,18 @@
 #include "parser.h"
 #include "process.h"
 #include "builtin.h"
+#include "signals.h"
 
 int main()
 {
+    initialize_signals();
+
     int count = 0;
     char **commands;
 
-    printf("=====================================\n");
+    printf("=================================\n");
     printf("       COMMAND PIPELINE VISUALIZER\n");
-    printf("=====================================\n");
+    printf("=================================\n");
     printf("Enter command pipelines.\n");
     printf("Type 'exit' when finished.\n");
 
