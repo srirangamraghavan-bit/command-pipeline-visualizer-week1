@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,10 +9,12 @@
 #include "signals.h"
 #include "pipes.h"
 #include "redirect.h"
+#include "thread.h"
 
 int main()
 {
     initialize_signals();
+    start_monitor_thread();
 
     int count = 0;
     char **commands;
@@ -58,3 +59,4 @@ int main()
 
     return 0;
 }
+
