@@ -14,3 +14,9 @@ run: $(TARGET)
 
 clean:
 	rm -rf bin/*
+
+
+asan: CFLAGS += -fsanitize=address -fno-omit-frame-pointer
+asan: $(SRC)
+	mkdir -p bin
+	$(CC) $(CFLAGS) $(SRC) -o bin/cpv-asan

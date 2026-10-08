@@ -83,3 +83,21 @@ data between pipeline stages.
 - `exit` for safely exiting the program
 - Built-in commands are handled internally without creating external processes
 - Command arguments are supported for built-in commands
+## Week 8 Features
+
+- Memory leak detection using Valgrind
+- Debugging using GDB
+- AddressSanitizer (ASan) support
+- Defensive programming practices
+- Improved error handling
+- Memory management and resource cleanup
+- Validation of dynamic memory allocation
+- Validation of pipe and process resources
+
+### Week 8 Testing
+
+#### Valgrind
+ShellForge was tested using Valgrind for memory leaks and errors.
+
+```bash
+valgrind --leak-check=full ./bin/cpv
